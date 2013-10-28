@@ -15,15 +15,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     UI/translatorwindow.cpp \      #GUI----------
-    Translator/translator.cpp \
-    Translator/dictionary.cpp \
-    DataStructs/avl_tree.cpp
+#    Translator/translator.cpp \
+#    Translator/dictionary.cpp \
+#    DataStructs/avl_tree.cpp
 
 HEADERS  += \
     UI/translatorwindow.h \        #GUI----------
-    Translator/translator.h \
-    Translator/dictionary.h \
-    DataStructs/avl_tree.h
+#    Translator/translator.h \
+#    Translator/dictionary.h \
+#    DataStructs/avl_tree.h
+    Translator/LevenshteinDistance.h
 
 FORMS    += \
     UI/translatorwindow.ui         #GUI----------

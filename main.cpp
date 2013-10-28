@@ -1,7 +1,7 @@
 //#include <QApplication>
 #include <iostream>
-#include "Translator/translator.h"
-#include "UI/translatorwindow.h"
+//#include "Translator/translator.h"
+//#include "UI/translatorwindow.h"
 
 using namespace std;
 
@@ -17,6 +17,11 @@ int main(int argc, char *argv[])
 //    w.show();
 
 //    return a.exec();
-/**************** GUI ******************/
+/**************** .GUI ******************/
+    string  first = "Saturday",
+            second = "Sunday";
+
+    cout << LevenshteinDistance(first, second) << endl;
+
     return 0;
 }
