@@ -33,7 +33,7 @@ private:
 
     void doubleRotationTo(Node_T *&p, RotationWay way);
 
-    void funcOver(Node_T *&p, size_t func(T, T), T &first);
+    void func_over(Node_T *p, size_t func(string&, string&), string &first);
 
     void makeRelations(Node_T *origin, ofstream& file);
 
@@ -47,13 +47,15 @@ public:
 
     bool find(T &d, Node_T **&p);
 
+    T &find2(T &d);
+
     bool insert(T &d);
 
     bool remove(T &d);
 
     void graph();
 
-    void funcOver(size_t func(T, T), T &first);
+    void funcOver(size_t func(string&, string&), string &first);
 
     void printIn();
 

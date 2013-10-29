@@ -3,7 +3,7 @@
 
 #include <string>
 #include "Translator/LevenshteinDistance.h"
-#include "DataStructs/c_list.h"
+#include "DataStructs/avl_tree.h"
 
 using namespace std;
 
@@ -50,7 +50,7 @@ public:
 struct WeightedWord {
     size_t m_weight;
 
-    Word *m_p2Word;
+    Word::tID m_ID;
 };
 
 //template <template <typename> class Container>
@@ -61,7 +61,7 @@ public:
 
 private:
     string m_language;
-    C_List<Word> m_words;
+    AVL_tree<Word> m_words;
 
 public:
     Dictionary(string language);
@@ -70,7 +70,7 @@ public:
 
     Word &getWord(tID ID);
 
-    void WeightWords(string _word);
+    AVL_tree<WeightedWord> WeightWords(string _word);
 
     bool LoadFromFile(char *path_to_file);
 

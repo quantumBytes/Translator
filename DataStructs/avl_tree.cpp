@@ -19,6 +19,18 @@ bool AVL_tree<T>::find(T &d, Node_T **&p) {
 }
 
 template <typename T>
+T &AVL_tree<T>::find2(T &d)
+{
+    Node_T **_obj = NULL;
+
+    if(find(d, _obj))
+        return (*_obj)->m_dato;
+
+    cout << "AVL: No encontrado" << endl;
+    throw 0;
+}
+
+template <typename T>
 void AVL_tree<T>::singleRotationTo(Node_T *&p, RotationWay way) {
     Node_T *q = p->m_pChildren[!way];
     p->m_pChildren[!way] = q->m_pChildren[way];
@@ -53,14 +65,14 @@ void AVL_tree<T>::doubleRotationTo(Node_T *&p, RotationWay way) {
 }
 
 template <typename T>
-void AVL_tree::funcOver(AVL_tree::Node_T *p, size_t _func(T, T), T &_first)
+void AVL_tree<T>::func_over(Node_T *p, size_t _func(string&, string&), string &_first)
 {
     if(!p)
         return;
-    funcOver(p->m_pChildren[LEFT], first);
-    cout << _first << "<>" << p->m_dato
+    func_over(p->m_pChildren[LEFT], _func, _first);
+    cout << _first << " <> " << p->m_dato
          << " : " << _func(_first,p->m_dato.getStr()) << endl;
-    funcOver(p->m_pChildren[RIGHT], first);
+    func_over(p->m_pChildren[RIGHT], _func, _first);
 }
 
 template <typename T>
@@ -168,9 +180,9 @@ void AVL_tree<T>::graph()
 }
 
 template <typename T>
-void AVL_tree::funcOver(size_t _func(T, T), T &_first)
+void AVL_tree<T>::funcOver(size_t _func(string&, string&), string &_first)
 {
-    funcOver(m_pRoot, _func, _first);
+    func_over(m_pRoot, _func, _first);
 }
 
 /*******TERMINADO*******/

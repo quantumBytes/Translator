@@ -17,7 +17,8 @@ Dictionary::Dictionary(string _language) :
 //template <template <typename> class Container>
 bool Dictionary::addWord(string word, tID ID) {
     Word ins(word, ID);
-    m_words.push_back(ins);
+//    m_words.push_back(ins);
+    m_words.insert(ins);
     return true;
 }
 
@@ -27,8 +28,10 @@ Word &Dictionary::getWord(tID ID) {
     return m_words.find2(obj);
 }
 
-void Dictionary::WeightWords(string _word)
+AVL_tree<WeightedWord> Dictionary::WeightWords(string _word)
 {
+    return m_words.funcOver(&LevenshteinDistance, _word);
+
 //    size_t list_size = m_words.size();
 //    for(register size_t i = 0; i < list_size; ++i) {
 //        cout << _word << " <> " << m_words.at(i).getStr() << " : "

@@ -15,9 +15,9 @@ int main(int argc, char *argv[])
     eng.addWord("banker", 4);
     eng.addWord("block", 5);
 
-    eng.WeightWords("benk");
+//    cout << eng.getWord(5) << endl;
 
-
+    eng.WeightWords("banke");
 
 /************** .Translator **************/
 
