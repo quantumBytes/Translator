@@ -28,9 +28,9 @@ Word &Dictionary::getWord(tID ID) {
     return m_words.find2(obj);
 }
 
-AVL_tree<WeightedWord> Dictionary::WeightWords(string _word)
+void Dictionary::WeightWords(string _word, AVL_tree<WeightedWord> &_tree)
 {
-    return m_words.funcOver(&LevenshteinDistance, _word);
+    m_words.funcOver(&LevenshteinDistance, _word, _tree);
 
 //    size_t list_size = m_words.size();
 //    for(register size_t i = 0; i < list_size; ++i) {
@@ -42,10 +42,27 @@ AVL_tree<WeightedWord> Dictionary::WeightWords(string _word)
 
 //template <template <typename> class Container>
 bool Dictionary::LoadFromFile(char *path_to_file) {
+    ifstream input(path_to_file);
 
+    size_t _size,
+           _ID;
+    string _str;
+
+    input >> _size;
+
+    for(register size_t i = 0; i < _size; ++i) {
+        input >> _str;
+        input >> _ID;
+        cout << _str << " [" << _ID << "]" << endl;
+        addWord(_str, _ID);
+    }
+
+    input.close();
+
+    return true;
 }
 
 //template <template <typename> class Container>
-bool Dictionary::SaveToFile(char *path_to_file) {
-
-}
+//bool Dictionary::SaveToFile(char *path_to_file) {
+//    return true;
+//}

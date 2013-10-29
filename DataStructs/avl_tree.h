@@ -2,6 +2,7 @@
 #define AVL_TREE_H
 
 #include "DataStructs/nodo.h"
+#include "Translator/WeightedWord.h"
 #include <fstream>
 #include <string>
 #include <fstream>
@@ -33,7 +34,7 @@ private:
 
     void doubleRotationTo(Node_T *&p, RotationWay way);
 
-    void func_over(Node_T *p, size_t func(string&, string&), string &first);
+    void func_over(Node_T *p, size_t func(string&, string&), string &first, AVL_tree<WeightedWord> &_tree);
 
     void makeRelations(Node_T *origin, ofstream& file);
 
@@ -55,7 +56,7 @@ public:
 
     void graph();
 
-    void funcOver(size_t func(string&, string&), string &first);
+    void funcOver(size_t func(string&, string&), string &first, AVL_tree<WeightedWord> &_tree);
 
     void printIn();
 

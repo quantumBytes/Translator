@@ -65,14 +65,18 @@ void AVL_tree<T>::doubleRotationTo(Node_T *&p, RotationWay way) {
 }
 
 template <typename T>
-void AVL_tree<T>::func_over(Node_T *p, size_t _func(string&, string&), string &_first)
+void AVL_tree<T>::func_over(Node_T *p, size_t _func(string&, string&), string &_first, AVL_tree<WeightedWord> &_tree)
 {
     if(!p)
         return;
-    func_over(p->m_pChildren[LEFT], _func, _first);
-    cout << _first << " <> " << p->m_dato
-         << " : " << _func(_first,p->m_dato.getStr()) << endl;
-    func_over(p->m_pChildren[RIGHT], _func, _first);
+    func_over(p->m_pChildren[LEFT], _func, _first, _tree);
+    WeightedWord tmp;
+    tmp.m_weight = _func(_first,p->m_dato.getStr());
+    tmp.m_ID = p->m_dato.getID();
+    _tree.insert(tmp);
+//    cout << _first << " <> " << p->m_dato
+//         << " : " << _func(_first,p->m_dato.getStr()) << endl;
+    func_over(p->m_pChildren[RIGHT], _func, _first, _tree);
 }
 
 template <typename T>
@@ -180,9 +184,9 @@ void AVL_tree<T>::graph()
 }
 
 template <typename T>
-void AVL_tree<T>::funcOver(size_t _func(string&, string&), string &_first)
+void AVL_tree<T>::funcOver(size_t _func(string&, string&), string &_first, AVL_tree<WeightedWord> &_tree)
 {
-    func_over(m_pRoot, _func, _first);
+    func_over(m_pRoot, _func, _first, _tree);
 }
 
 /*******TERMINADO*******/
@@ -191,8 +195,8 @@ void AVL_tree<T>::printElem(Node_T *&p) {
 
     cout << p->m_dato
         //Imprime el factor de balance
-         << ": " << p->balance_factor
-         << "\t";
+         /*<< ": " << p->balance_factor
+         << "\t"*/;
 }
 
 /*******TERMINADO*******/

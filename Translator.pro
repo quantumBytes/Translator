@@ -28,7 +28,8 @@ HEADERS += \
     Translator/translator.h \
     Translator/LevenshteinDistance.h \
     Translator/dictionary.h \
-    UI/translatorwindow.h
+    UI/translatorwindow.h \
+    Translator/WeightedWord.h
 
 FORMS += \
     UI/translatorwindow.ui

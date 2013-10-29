@@ -4,6 +4,7 @@
 #include <string>
 #include "Translator/LevenshteinDistance.h"
 #include "DataStructs/avl_tree.h"
+#include <fstream>
 
 using namespace std;
 
@@ -23,6 +24,10 @@ public:
 
     inline void setID(tID &ID) {
         m_wID = ID;
+    }
+
+    inline void setStr(string &_str) {
+        m_me = _str;
     }
 
     inline string &getStr() {
@@ -47,12 +52,6 @@ public:
     }
 };
 
-struct WeightedWord {
-    size_t m_weight;
-
-    Word::tID m_ID;
-};
-
 //template <template <typename> class Container>
 class Dictionary
 {
@@ -70,11 +69,11 @@ public:
 
     Word &getWord(tID ID);
 
-    AVL_tree<WeightedWord> WeightWords(string _word);
+    void WeightWords(string _word, AVL_tree<WeightedWord> &_tree);
 
     bool LoadFromFile(char *path_to_file);
 
-    bool SaveToFile(char *path_to_file);
+//    bool SaveToFile(char *path_to_file);
 
 };
 

@@ -9,15 +9,20 @@ int main(int argc, char *argv[])
 {
 /************** Translator **************/
     Dictionary eng("english");
-    eng.addWord("abducted", 1);
-    eng.addWord("abhorred", 2);
-    eng.addWord("bank", 3);
-    eng.addWord("banker", 4);
-    eng.addWord("block", 5);
+//    eng.addWord("abducted", 1);
+//    eng.addWord("abhorred", 2);
+//    eng.addWord("bank", 3);
+//    eng.addWord("banker", 4);
+//    eng.addWord("block", 5);
 
 //    cout << eng.getWord(5) << endl;
 
-    eng.WeightWords("banke");
+    eng.LoadFromFile("english.txt");
+
+    AVL_tree<WeightedWord> tree;
+    eng.WeightWords("part", tree);
+    tree.printIn();
+
 
 /************** .Translator **************/
 
