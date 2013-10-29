@@ -20,9 +20,15 @@ int main(int argc, char *argv[])
     eng.LoadFromFile("english.txt");
 
     AVL_tree<WeightedWord> tree;
-    eng.WeightWords("part", tree);
+    eng.WeightWords("cat", tree);
     tree.printIn();
 
+    C_List<WeightedWord> list;
+    tree.take_minor(5, list);
+
+    for(int i = 0; i < 5; ++i) {
+    cout << list.at(i).m_ID << " : " << list.at(i).m_weight << endl;
+    }
 
 /************** .Translator **************/
 

@@ -7,6 +7,7 @@
 #include <string>
 #include <fstream>
 #include <stdlib.h>
+#include "DataStructs/c_list.h"
 
 using namespace std;
 
@@ -37,6 +38,8 @@ private:
     void func_over(Node_T *p, size_t func(string&, string&), string &first, AVL_tree<WeightedWord> &_tree);
 
     void makeRelations(Node_T *origin, ofstream& file);
+
+    void take_n_by_side(Node_T *_p, RotationWay way, size_t &n, C_List<T> &_list);
 
 public:
 
@@ -71,6 +74,10 @@ public:
     void printPos(Node_T *p);
 
     int height();
+
+    void take_minor(size_t n, C_List<T> &_list);
+
+    void take_greater(size_t n, C_List<T> &_list);
 };
 
 #include "avl_tree.cpp"

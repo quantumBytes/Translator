@@ -166,6 +166,22 @@ void AVL_tree<T>::makeRelations(Node_T *origin, ofstream& file)
 }
 
 template<typename T>
+void AVL_tree<T>::take_n_by_side(AVL_tree::Node_T *_p, AVL_tree::RotationWay way, size_t &n, C_List<T> &_list)
+{
+    if(!_p)
+        return;
+
+    take_n_by_side(_p->m_pChildren[way], way, n, _list);
+
+    if(n > 0) {
+        _list.push_back(_p->m_dato);
+        n--;
+        take_n_by_side(_p->m_pChildren[!way], way, n, _list);
+        return;
+    }
+}
+
+template<typename T>
 void AVL_tree<T>::graph()
 {
     if(!m_pRoot) return;
@@ -253,5 +269,17 @@ void AVL_tree<T>::printPos() {
 /*******TERMINADO*******/
 template <typename T>
 int AVL_tree<T>::height() {
-//    REIMPLEMENTAR ---------------------------------->
+    //    REIMPLEMENTAR ---------------------------------->
+}
+
+template <typename T>
+void AVL_tree<T>::take_minor(size_t n, C_List<T> &_list)
+{
+    take_n_by_side(m_pRoot, LEFT, n, _list);
+}
+
+template <typename T>
+void AVL_tree<T>::take_greater(size_t n, C_List<T> &_list)
+{
+    take_n_by_side(m_pRoot, RIGHT, n, _list);
 }

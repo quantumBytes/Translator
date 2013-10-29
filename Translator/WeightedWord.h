@@ -17,7 +17,7 @@ public:
     }
 
     bool operator<(WeightedWord &_snd) {
-        return m_ID < _snd.m_ID;
+        return m_weight < _snd.m_weight;
     }
 
     friend ostream &operator<<(ostream &_os, WeightedWord &_obj) {
