@@ -9,6 +9,9 @@ Word::Word(tID ID) :
     m_wID(ID)
 {}
 
+Dictionary::Dictionary()
+{}
+
 //template <template <typename> class Container>
 Dictionary::Dictionary(string _language) :
     m_language(_language)
@@ -48,12 +51,14 @@ bool Dictionary::LoadFromFile(char *path_to_file) {
            _ID;
     string _str;
 
+    input >> _str;
     input >> _size;
+
+    m_language = _str;
 
     for(register size_t i = 0; i < _size; ++i) {
         input >> _str;
         input >> _ID;
-        cout << _str << " [" << _ID << "]" << endl;
         addWord(_str, _ID);
     }
 

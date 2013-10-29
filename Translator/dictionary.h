@@ -63,6 +63,8 @@ private:
     AVL_tree<Word> m_words;
 
 public:
+    Dictionary();
+
     Dictionary(string language);
 
     bool addWord(string word, tID ID);

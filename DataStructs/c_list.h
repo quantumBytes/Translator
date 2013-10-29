@@ -52,6 +52,8 @@ public:
 
     T at(size_t p);
 
+    T &last();
+
     void reverse();
 
     bool find(T &d);
@@ -238,6 +240,11 @@ T &C_List<T>::find2(T &d)
             return tmp->m_dato;
         }
     throw 0;
+}
+
+template <typename T>
+T &C_List<T>::last() {
+    return m_pLast->m_dato;
 }
 
 #endif // C_LIST_H

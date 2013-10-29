@@ -3,18 +3,30 @@
 
 #include "Translator/dictionary.h"
 
-//class translator
-//{
+#define N_ELM 7
 
-//private:
-//    Dictionary *Langs;  //Puntero a diccionarios, cada diccionario es un lenguaje
+class translator
+{
 
-//public:
-//    translator();
+private:
+    C_List<Dictionary> m_Langs;  //Puntero a diccionarios, cada diccionario es un lenguaje
+    size_t  m_Orig,  //Posición Diccionario Origen
+            m_Dest;  //Posición Diccionario Destino
 
-//    void AddLanguage(char *path_to_dict);
+public:
+    translator();
 
-//    void getSimilars(string word);
-//};
+    void AddDict(char *_path_to_dict);
+
+    void getSimilars(string _word, C_List<WeightedWord> &_list);
+
+    void setOrigin(size_t _orig);
+
+    void setDestiny(size_t _dest);
+
+    void invert();
+
+    void translate(Word::tID _ID, string &_result);
+};
 
 #endif // TRANSLATOR_H
