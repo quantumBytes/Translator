@@ -3,18 +3,18 @@
 
 #include "Translator/dictionary.h"
 
-class translator
-{
+//class translator
+//{
 
-private:
-    Dictionary *Langs;  //Puntero a diccionarios, cada diccionario es un lenguaje
+//private:
+//    Dictionary *Langs;  //Puntero a diccionarios, cada diccionario es un lenguaje
 
-public:
-    translator();
+//public:
+//    translator();
 
-    void AddLanguage(char *path_to_dict);
+//    void AddLanguage(char *path_to_dict);
 
-    void getSimilars(string word);
-};
+//    void getSimilars(string word);
+//};
 
 #endif // TRANSLATOR_H

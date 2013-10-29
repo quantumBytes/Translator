@@ -1,4 +1,4 @@
-#include "dictionary.h"
+#include "Translator/dictionary.h"
 
 Word::Word(string &w, tID ID) :
     m_me(w),
@@ -9,36 +9,40 @@ Word::Word(tID ID) :
     m_wID(ID)
 {}
 
-template <typename DE>
-Dictionary<DE>::Dictionary(string Language) :
-    m_language(Language)
+//template <template <typename> class Container>
+Dictionary::Dictionary(string _language) :
+    m_language(_language)
 {}
 
-template <typename DE>
-bool Dictionary<DE>::addWord(string word, tID ID) {
+//template <template <typename> class Container>
+bool Dictionary::addWord(string word, tID ID) {
     Word ins(word, ID);
-    m_words.insert(ins);
+    m_words.push_back(ins);
+    return true;
 }
 
-//--------Implementar!-------------
-template <typename DE>
-Dictionary<DE>::tID Dictionary<DE>::addWord(string word) {
-
-}
-
-template <typename DE>
-bool Dictionary<DE>::getWord(tID ID, Word *ptr) {
+//template <template <typename> class Container>
+Word &Dictionary::getWord(tID ID) {
     Word obj(ID);
-
-    m_words.find(Obj, tmp)
+    return m_words.find2(obj);
 }
 
-template <typename DE>
-bool Dictionary<DE>::LoadFromFile(char *path_to_file) {
+void Dictionary::WeightWords(string _word)
+{
+//    size_t list_size = m_words.size();
+//    for(register size_t i = 0; i < list_size; ++i) {
+//        cout << _word << " <> " << m_words.at(i).getStr() << " : "
+//             << LevenshteinDistance(_word, m_words.at(i).getStr()) << endl;
+//    }
+//    cout << endl;
+}
+
+//template <template <typename> class Container>
+bool Dictionary::LoadFromFile(char *path_to_file) {
 
 }
 
-template <typename DE>
-bool Dictionary<DE>::SaveToFile(char *path_to_file) {
+//template <template <typename> class Container>
+bool Dictionary::SaveToFile(char *path_to_file) {
 
 }

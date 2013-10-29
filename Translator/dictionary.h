@@ -2,6 +2,8 @@
 #define DICTIONARY_H
 
 #include <string>
+#include "Translator/LevenshteinDistance.h"
+#include "DataStructs/c_list.h"
 
 using namespace std;
 
@@ -11,10 +13,13 @@ public:
 
 private:
     string m_me;
+
     tID m_wID;
 
 public:
     Word(string &w, tID ID = 0);
+
+    Word(tID ID = 0);
 
     inline void setID(tID &ID) {
         m_wID = ID;
@@ -28,12 +33,27 @@ public:
         return m_wID;
     }
 
-    inline bool operator ==(Word &w) {
+    inline bool operator==(Word &w) {
         return m_wID == w.m_wID;
+    }
+
+    inline bool operator<(Word &w) {
+        return m_wID < w.m_wID;
+    }
+
+    friend ostream &operator<<(ostream &_os, Word &_obj) {
+        _os << _obj.m_me << endl;
+        return _os;
     }
 };
 
-template <typename DE>
+struct WeightedWord {
+    size_t m_weight;
+
+    Word *m_p2Word;
+};
+
+//template <template <typename> class Container>
 class Dictionary
 {
 public:
@@ -41,18 +61,16 @@ public:
 
 private:
     string m_language;
-    DE<Word> m_words;
+    C_List<Word> m_words;
 
 public:
-    Dictionary(string Language);
+    Dictionary(string language);
 
     bool addWord(string word, tID ID);
 
-    tID addWord(string word);
+    Word &getWord(tID ID);
 
-    bool getWord(tID ID, Word *ptr);
-
-//    tID searchWord(string word);
+    void WeightWords(string _word);
 
     bool LoadFromFile(char *path_to_file);
 

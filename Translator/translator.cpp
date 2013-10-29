@@ -1,5 +1,5 @@
 #include "translator.h"
 
-translator::translator()
-{
-}
+//translator::translator()
+//{
+//}

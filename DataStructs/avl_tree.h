@@ -1,7 +1,7 @@
 #ifndef AVL_TREE_H
 #define AVL_TREE_H
 
-#include "node.h"
+#include "DataStructs/nodo.h"
 #include <fstream>
 #include <string>
 #include <fstream>
@@ -17,7 +17,7 @@ class AVL_tree
         RIGHT = 1
     };
 
-    typedef node<T> Node_T;
+    typedef AVL_Node<T> Node_T;
 
 private:
 
@@ -32,6 +32,8 @@ private:
     void singleRotationTo(Node_T *&p, RotationWay way);
 
     void doubleRotationTo(Node_T *&p, RotationWay way);
+
+    void funcOver(Node_T *&p, size_t func(T, T), T &first);
 
     void makeRelations(Node_T *origin, ofstream& file);
 
@@ -50,6 +52,8 @@ public:
     bool remove(T &d);
 
     void graph();
+
+    void funcOver(size_t func(T, T), T &first);
 
     void printIn();
 

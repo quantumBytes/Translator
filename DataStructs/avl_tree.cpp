@@ -53,6 +53,17 @@ void AVL_tree<T>::doubleRotationTo(Node_T *&p, RotationWay way) {
 }
 
 template <typename T>
+void AVL_tree::funcOver(AVL_tree::Node_T *p, size_t _func(T, T), T &_first)
+{
+    if(!p)
+        return;
+    funcOver(p->m_pChildren[LEFT], first);
+    cout << _first << "<>" << p->m_dato
+         << " : " << _func(_first,p->m_dato.getStr()) << endl;
+    funcOver(p->m_pChildren[RIGHT], first);
+}
+
+template <typename T>
 bool AVL_tree<T>::insert(T &d, Node_T *&p, bool &Balanced) {
     if(!p) {
         p = new Node_T(d);
@@ -154,6 +165,12 @@ void AVL_tree<T>::graph()
 
     //system("dot -Tpng -O graph.dot");
     //system("eog graph.dot.png");
+}
+
+template <typename T>
+void AVL_tree::funcOver(size_t _func(T, T), T &_first)
+{
+    funcOver(m_pRoot, _func, _first);
 }
 
 /*******TERMINADO*******/

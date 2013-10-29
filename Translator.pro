@@ -1,30 +1,34 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2013-10-05T15:03:24
+# Project created by QtCreator 2013-10-28T18:50:11
 #
 #-------------------------------------------------
 
-#GUI ---------------------
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Translator
 TEMPLATE = app
-#GUI--------------
 
-SOURCES += main.cpp \
-    UI/translatorwindow.cpp \      #GUI----------
-#    Translator/translator.cpp \
-#    Translator/dictionary.cpp \
-#    DataStructs/avl_tree.cpp
 
-HEADERS  += \
-    UI/translatorwindow.h \        #GUI----------
-#    Translator/translator.h \
-#    Translator/dictionary.h \
-#    DataStructs/avl_tree.h
-    Translator/LevenshteinDistance.h
+SOURCES += main.cpp\
+    DataStructs/nodo.cpp \
+    DataStructs/c_list.cpp \
+    DataStructs/avl_tree.cpp \
+    Translator/translator.cpp \
+    Translator/dictionary.cpp \
+    UI/translatorwindow.cpp \
+    Translator/LevenshteinDistance.cpp
 
-FORMS    += \
-    UI/translatorwindow.ui         #GUI----------
+HEADERS += \
+    DataStructs/nodo.h \
+    DataStructs/c_list.h \
+    DataStructs/avl_tree.h \
+    Translator/translator.h \
+    Translator/LevenshteinDistance.h \
+    Translator/dictionary.h \
+    UI/translatorwindow.h
+
+FORMS += \
+    UI/translatorwindow.ui
